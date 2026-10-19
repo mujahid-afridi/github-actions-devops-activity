@@ -35,3 +35,17 @@ jobs:
       - name: Always run this step
         if: always()
         run: echo "This step runs regardless of earlier step outcomes."
+
+      - name: Read repository variable
+        run: echo "Application environment: ${{ vars.APP_ENV }}"
+
+      - name: Verify secret is configured
+        env:
+          DEMO_SECRET: ${{ secrets.DEMO_SECRET }}
+        run: |
+          if [ -n "$DEMO_SECRET" ]; then
+            echo "Demo secret is configured."
+          else
+            echo "Demo secret is missing."
+            exit 1
+          fi
