@@ -50,3 +50,20 @@ jobs:
             echo "Demo secret is missing."
             exit 1
           fi
+          
+  windows-check:
+    runs-on: windows-latest
+    steps:
+      - name: Show Windows runner information
+        run: |
+          Write-Host "Runner OS: ${{ runner.os }}"
+          Write-Host "Running on Windows successfully."
+
+  macos-check:
+    runs-on: macos-latest
+    steps:
+      - name: Show macOS runner information
+        run: |
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Running on macOS successfully."
+
