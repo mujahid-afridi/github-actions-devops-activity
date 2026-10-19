@@ -37,7 +37,8 @@ jobs:
         run: echo "This step runs regardless of earlier step outcomes."
 
       - name: Read repository variable
-        run: echo "Application environment: ${{ vars.APP_ENV }}"
+        run: |
+          echo "Application environment: ${{ vars.APP_ENV }}"
 
       - name: Verify secret is configured
         env:
