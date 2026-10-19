@@ -1,0 +1,20 @@
+
+name: First GitHub Actions Workflow
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+  workflow_dispatch:
+
+jobs:
+  basic-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show workflow information
+        run: |
+          echo "Hello from GitHub Actions!"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Triggered by: $GITHUB_EVENT_NAME"
+          echo "Actor: $GITHUB_ACTOR"
