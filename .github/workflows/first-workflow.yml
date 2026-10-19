@@ -67,3 +67,16 @@ jobs:
           echo "Runner OS: ${{ runner.os }}"
           echo "Running on macOS successfully."
 
+  
+  self-hosted-check:
+    runs-on: self-hosted
+    steps:
+      - name: Verify self-hosted runner
+        run: echo "This job is running on my own computer!"
+
+      - name: Show runner information
+        run: |
+          echo "Runner name: ${{ runner.name }}"
+          echo "Runner OS: ${{ runner.os }}"
+
+
