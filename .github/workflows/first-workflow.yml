@@ -23,3 +23,15 @@ jobs:
           echo "Event: ${{ github.event_name }}"
           echo "Runner OS: ${{ runner.os }}"
           echo "Workflow: ${{ github.workflow }}"
+          
+      - name: Run on success
+        if: success()
+        run: echo "Previous steps succeeded."
+
+      - name: Check event type
+        if: contains(github.event_name, 'push')
+        run: echo "This workflow was triggered by a push event."
+
+      - name: Always run this step
+        if: always()
+        run: echo "This step runs regardless of earlier step outcomes."
