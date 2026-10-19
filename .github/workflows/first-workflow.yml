@@ -143,6 +143,15 @@ jobs:
           psql -c "CREATE TABLE activity (id SERIAL PRIMARY KEY, message TEXT);"
           psql -c "INSERT INTO activity (message) VALUES ('Service container works');"
           psql -c "SELECT * FROM activity;"
+  
+  custom-action-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run custom greeting action
+        uses: mujahid-afridi/my-custom-github-action@v1.0.0
+        with:
+          name: "DevOps Student"
+
 
 
 
