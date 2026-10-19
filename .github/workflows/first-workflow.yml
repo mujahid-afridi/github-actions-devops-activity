@@ -16,10 +16,10 @@ jobs:
   basic-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Show workflow information
+      - name: Show workflow contexts
         run: |
-          echo "Hello from GitHub Actions!"
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "Triggered by: $GITHUB_EVENT_NAME"
-          echo "Actor: $GITHUB_ACTOR"
-          echo "Runner OS: $RUNNER_OS"
+          echo "Repository: ${{ github.repository }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Workflow: ${{ github.workflow }}"
