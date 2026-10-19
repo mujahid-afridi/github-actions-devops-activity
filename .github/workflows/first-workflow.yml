@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [custom-webhook]
-    
+
 jobs:
   basic-check:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
           echo "Event: ${{ github.event_name }}"
           echo "Runner OS: ${{ runner.os }}"
           echo "Workflow: ${{ github.workflow }}"
-          
+
       - name: Run on success
         if: success()
         run: echo "Previous steps succeeded."
