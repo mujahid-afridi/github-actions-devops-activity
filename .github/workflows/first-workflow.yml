@@ -79,4 +79,23 @@ jobs:
           echo "Runner name: ${{ runner.name }}"
           echo "Runner OS: ${{ runner.os }}"
 
+  
+  matrix-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Display Node.js version
+        run: node --version
+
+
 
