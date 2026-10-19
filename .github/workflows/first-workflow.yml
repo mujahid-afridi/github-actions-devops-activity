@@ -79,6 +79,7 @@ jobs:
           echo "Runner name: ${{ runner.name }}"
           echo "Runner OS: ${{ runner.os }}"
   
+  
   matrix-build:
     runs-on: ubuntu-latest
     strategy:
@@ -88,14 +89,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js with caching
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: npm
+
+      - name: Cache a sample directory
+        uses: actions/cache@v4
+        with:
+          path: cache-demo
+          key: demo-cache-${{ runner.os }}-node-${{ matrix.node-version }}
+
+      - name: Create sample cache data
+        run: |
+          mkdir -p cache-demo
+          echo "Cached data for Node.js ${{ matrix.node-version }}" > cache-demo/data.txt
+          cat cache-demo/data.txt
 
       - name: Display Node.js version
         run: node --version
+
 
 
 
